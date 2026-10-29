@@ -67,6 +67,7 @@ GROUP BY album_type
 ORDER BY promedio_minutos DESC;
 ```
 <img width="470" height="145" alt="image" src="https://github.com/user-attachments/assets/2e552098-c573-4b40-90fa-34954583a0ba" />
+
 ### 7. ¿Existe una correlación visible entre la popularidad del artista (artist_popularity) y la popularidad de sus canciones (track_popularity)?
 ```
 SELECT 
