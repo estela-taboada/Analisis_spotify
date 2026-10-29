@@ -42,6 +42,8 @@ SELECT
 FROM DataSpotify 
 GROUP BY explicit;
 ```
+<img width="460" height="109" alt="image" src="https://github.com/user-attachments/assets/bc70b335-f0e0-432e-85e1-e27f239b735c" />
+
 
 ### 4. ¿Quiénes son los 5 artistas con mayor número de seguidores?
    
