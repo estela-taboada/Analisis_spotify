@@ -1,42 +1,48 @@
-# 🎹🎧🎼Análisis_spotify🎹🎧🎼
-##  Popularidad y análisis en spotify
-Se toman datos de la pagina 🌐https://www.kaggle.com/learn 🌐, analizando las siguientes preguntas realizando las consultas en SQL:
-### 1. ¿Cuáles son las 10 canciones más populares y quiénes son sus artistas? 
-```
+# 📊 Análisis Exploratorio de Datos en Spotify con SQL
+
+Proyecto de análisis de datos centrado en métricas de popularidad, duración, impacto de contenido explícito y correlación entre artistas y temas en la plataforma Spotify.
+
+* **Fuente de datos:** Kaggle Datasets (`DataSpotify`)
+* **Herramientas:** SQL / SQLite
+
+---
+
+## Preguntas de Negocio y Consultas SQL
+
+### 1. ¿Cuáles son las 10 canciones más populares y quiénes son sus artistas?
+```SQL
 SELECT 
     track_name,
     artist_name,
     track_popularity
 FROM DataSpotify
 ORDER BY track_popularity DESC
-LIMIT 10; 
+LIMIT 10;
 ```
-<img width="573" height="399" alt="image" src="https://github.com/user-attachments/assets/6703cfed-6dc9-4c71-8d87-880855387301" />
 
-### 2. ¿Cuál es el promedio de duración (track_duration_min) de las canciones según el tipo de lanzamiento (album_type: single vs. album)?
-```
-SELECT 
+2. ¿Cuál es el promedio de duración de las canciones según el tipo de lanzamiento (album_type)?
+```SQL
+   SQLSELECT 
     album_type,
-    ROUND(AVG(track_duration_m), 2) AS promedio_duracion
+    ROUND(AVG(track_duration_m), 2) AS promedio_duracion_min
 FROM DataSpotify
 GROUP BY album_type
-ORDER BY promedio_duracion DESC;
+ORDER BY promedio_duracion_min DESC;
 ```
-<img width="550" height="178" alt="image" src="https://github.com/user-attachments/assets/cc05dae3-8a6f-4aef-8cd7-674e6fd1fc00" />
-
-### 3. ¿Cuántas canciones tienen contenido explícito (explicit = TRUE) frente a las que son para todo público (FALSE)? */
-```
+4. ¿Cuántas canciones tienen contenido explícito frente a las aptas para todo público?
+ 
+```SQL
 SELECT 
     explicit, 
     COUNT(*) AS total_canciones
 FROM DataSpotify 
 GROUP BY explicit;
 ```
-<img width="461" height="119" alt="image" src="https://github.com/user-attachments/assets/e7be7d1e-9fe1-4bf0-adf3-1fa8466bed86" />
 
-### 4. ¿Quiénes son los 5 artistas con mayor número de seguidores en este dataset?
-```
-SELECT 
+6. ¿Quiénes son los 5 artistas con mayor número de seguidores?
+   
+   ```SQL
+   SELECT 
     artist_name,
     MAX(artist_followers) AS total_seguidores
 FROM DataSpotify
@@ -44,10 +50,9 @@ GROUP BY artist_name
 ORDER BY total_seguidores DESC
 LIMIT 5;
 ```
-<img width="457" height="205" alt="image" src="https://github.com/user-attachments/assets/d48b4ee3-5c92-4b7c-a221-f50196f33145" />
+8. ¿Cuál es la popularidad promedio de las canciones por género musical (artist_genres)?
 
-### 5. ¿Cuál es la popularidad promedio de las canciones por cada género musical (artist_genres)? (Aquí se puede filtrar solo géneros con más de X canciones para evitar sesgos)
-```
+```SQL
 SELECT 
     artist_genres,
     ROUND(AVG(track_popularity), 2) AS popularidad_promedio,
@@ -57,42 +62,21 @@ WHERE artist_genres != 'N/A'
 GROUP BY artist_genres
 ORDER BY popularidad_promedio DESC;
 ```
-<img width="607" height="391" alt="image" src="https://github.com/user-attachments/assets/1da7f7d4-ea61-4818-9fe7-df3efe87a56b" />
-
-### 6. ¿Cuál es la duración promedio (track_duration_m) de las canciones según el tipo de álbum (album_type)?*/ 
-```
-SELECT album_type, ROUND(AVG(track_duration_m), 2) AS promedio_minutos
-FROM DataSpotify
-GROUP BY album_type
-ORDER BY promedio_minutos DESC;
-```
-<img width="470" height="145" alt="image" src="https://github.com/user-attachments/assets/2e552098-c573-4b40-90fa-34954583a0ba" />
-
-### 7. ¿Existe una correlación visible entre la popularidad del artista (artist_popularity) y la popularidad de sus canciones (track_popularity)?
-```
-SELECT 
-   artist_name,
-   artist_popularit,
-   ROUND(AVG(track_popularity), 2) AS promedio_canciones
+9. ¿Existe una correlación visible entre la popularidad del artista y la de sus temas?
+    ```SQL SELECT 
+    artist_name,
+    artist_popularit,
+    ROUND(AVG(track_popularity), 2) AS promedio_canciones
 FROM DataSpotify
 GROUP BY artist_name, artist_popularit
 ORDER BY artist_popularit DESC
 LIMIT 15;
 ```
-<img width="612" height="420" alt="image" src="https://github.com/user-attachments/assets/eae88ce6-1446-4d95-878d-ab102b2f37b7" />
+Interpretación de hallazgos:Relación positiva evidente: Artistas situados en niveles máximos de popularidad ($\ge 95$) conservan promedios elevados en sus temas ($\ge 60$) en contraste con el catálogo general.Efecto catálogo extenso: El promedio individual de las canciones suele ser menor al índice de popularidad del artista; discografías amplias incluyen temas secundarios que moderan la media respecto a sus grandes éxitos.
 
-#### Interpretación de los datos:
-Al comparar las dos métricas numéricas observamos:  
-* Taylor Swift: Popularidad de artista = 100, promedio de canciones = 60.05.   
-* Bad Bunny: Popularidad de artista = 95, promedio de canciones = 73.34.  
-* Drake: Popularidad de artista = 95, promedio de canciones = 65.89.
-
-### Conclusión analítica:
-Sí existe una relación positiva visible: Los artistas con popularidad muy alta ($\ge 95$) mantienen promedios de canciones elevados ($\ge 60$) en comparación con el resto del catálogo general.   El promedio de canciones siempre es menor que el pico del artista: Esto ocurre porque artistas consolidados como Taylor Swift o Drake tienen discografías muy extensas; aunque sus sencillos principales alcancen puntuaciones cercanas a 90 o 100, sus temas de relleno o pistas secundarias promedian entre 40 y 60 puntos, moderando la media general. 
-
-### 8. Usando DENSE_RANK() o ROW_NUMBER(): ¿Cuál es la canción más popular de cada artista dentro del dataset?
-```
-WITH canciones_rankeadas AS (
+7. Canción más popular de cada artista (ROW_NUMBER:
+```SQL
+WITHcanciones_rankeadas AS (
     SELECT 
         artist_name,
         track_name,
@@ -111,8 +95,22 @@ FROM canciones_rankeadas
 WHERE ranking = 1
 ORDER BY track_popularity DESC;
 ```
-<img width="567" height="412" alt="image" src="https://github.com/user-attachments/assets/96c5048b-fa13-4dba-9f31-8b17dc13a1c9" />
 
-### 9. ¿Cómo se distribuye la duración de los tracks? ¿Las canciones cortas (menores a 2.5 min) tienen mayor popularidad promedio que las largas? 
+8. Distribución y desempeño según la duración del tema:
+   ```SQL
+   SELECT 
+    CASE 
+        WHEN track_duration_m < 2.5 THEN 'Corta (< 2.5 min)'
+        WHEN track_duration_m BETWEEN 2.5 AND 3.5 THEN 'Media (2.5 - 3.5 min)'
+        ELSE 'Larga (> 3.5 min)'
+    END AS rango_duracion,
+    COUNT(*) AS total_canciones,
+    ROUND(AVG(track_popularity), 2) AS popularidad_promedio
+FROM DataSpotify
+GROUP BY rango_duracion
+ORDER BY popularidad_promedio DESC;
+```
+
+Conclusiones del análisis:Volumen del catálogo: Predominan las producciones de media y larga duración (más de 7,400 canciones combinadas), frente a solo 1,171 temas cortos.Impacto en popularidad: Las canciones cortas registran la menor aceptación relativa (42.14 puntos), mientras que los formatos largos (> 3.5 min) lideran con 54.86 puntos, superando la media en más de 12 puntos.
 
 
