@@ -19,6 +19,7 @@ FROM DataSpotify
 ORDER BY track_popularity DESC
 LIMIT 10;
 ```
+<img width="589" height="378" alt="image" src="https://github.com/user-attachments/assets/25205ca3-a5f9-4f9f-acdc-3102f4e16d0d" />
 
 ### 2. ¿Cuál es el promedio de duración de las canciones según el tipo de lanzamiento (album_type)?
 ```SQL
@@ -29,6 +30,9 @@ FROM DataSpotify
 GROUP BY album_type
 ORDER BY promedio_duracion_min DESC;
 ```
+
+<img width="514" height="135" alt="image" src="https://github.com/user-attachments/assets/f0cd178d-e2f9-4efa-b66d-740d1664c66b" />
+
 ### 3. ¿Cuántas canciones tienen contenido explícito frente a las aptas para todo público?
  
 ```SQL
@@ -50,6 +54,10 @@ GROUP BY artist_name
 ORDER BY total_seguidores DESC
 LIMIT 5;
 ```
+
+<img width="472" height="223" alt="image" src="https://github.com/user-attachments/assets/e0722746-69af-4c95-9552-9cf7f2a2756a" />
+
+
 ### 5. ¿Cuál es la popularidad promedio de las canciones por género musical (artist_genres)?
 
 ```SQL
@@ -62,7 +70,11 @@ WHERE artist_genres != 'N/A'
 GROUP BY artist_genres
 ORDER BY popularidad_promedio DESC;
 ```
+
+<img width="570" height="412" alt="image" src="https://github.com/user-attachments/assets/dceb1d9a-fe0d-4bef-895d-0b0ac0dafff3" />
+
 ### 6. ¿Existe una correlación visible entre la popularidad del artista y la de sus temas?
+
 ```SQL
 SELECT 
     artist_name,
@@ -73,9 +85,13 @@ GROUP BY artist_name, artist_popularit
 ORDER BY artist_popularit DESC
 LIMIT 15;
 ```
+
+<img width="603" height="409" alt="image" src="https://github.com/user-attachments/assets/166c7c49-ac5a-4a3b-a9c1-426d2ebe44a2" />
+
 Interpretación de hallazgos:Relación positiva evidente: Artistas situados en niveles máximos de popularidad ($\ge 95$) conservan promedios elevados en sus temas ($\ge 60$) en contraste con el catálogo general.Efecto catálogo extenso: El promedio individual de las canciones suele ser menor al índice de popularidad del artista; discografías amplias incluyen temas secundarios que moderan la media respecto a sus grandes éxitos.
 
 ### 7. Canción más popular de cada artista (ROW_NUMBER:
+
 ```SQL
 WITHcanciones_rankeadas AS (
     SELECT 
@@ -96,6 +112,7 @@ FROM canciones_rankeadas
 WHERE ranking = 1
 ORDER BY track_popularity DESC;
 ```
+<img width="570" height="417" alt="image" src="https://github.com/user-attachments/assets/0c590c7b-8f96-4bc7-b227-9503169e6c51" />
 
 ### 8. Distribución y desempeño según la duración del tema:
 
@@ -111,8 +128,8 @@ ORDER BY track_popularity DESC;
 FROM DataSpotify
 GROUP BY rango_duracion
 ORDER BY popularidad_promedio DESC;
-
 ```
+<img width="609" height="148" alt="image" src="https://github.com/user-attachments/assets/ac106138-9aeb-45cb-a0c0-3aa998e24f40" />
 
 Conclusiones del análisis:Volumen del catálogo: Predominan las producciones de media y larga duración (más de 7,400 canciones combinadas), frente a solo 1,171 temas cortos.Impacto en popularidad: Las canciones cortas registran la menor aceptación relativa (42.14 puntos), mientras que los formatos largos (> 3.5 min) lideran con 54.86 puntos, superando la media en más de 12 puntos.
 
