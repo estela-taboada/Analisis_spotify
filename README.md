@@ -29,7 +29,7 @@ FROM DataSpotify
 GROUP BY album_type
 ORDER BY promedio_duracion_min DESC;
 ```
-4. ¿Cuántas canciones tienen contenido explícito frente a las aptas para todo público?
+3. ¿Cuántas canciones tienen contenido explícito frente a las aptas para todo público?
  
 ```SQL
 SELECT 
@@ -39,7 +39,7 @@ FROM DataSpotify
 GROUP BY explicit;
 ```
 
-6. ¿Quiénes son los 5 artistas con mayor número de seguidores?
+4. ¿Quiénes son los 5 artistas con mayor número de seguidores?
    
    ```SQL
    SELECT 
@@ -50,7 +50,7 @@ GROUP BY artist_name
 ORDER BY total_seguidores DESC
 LIMIT 5;
 ```
-8. ¿Cuál es la popularidad promedio de las canciones por género musical (artist_genres)?
+5. ¿Cuál es la popularidad promedio de las canciones por género musical (artist_genres)?
 
 ```SQL
 SELECT 
@@ -62,7 +62,7 @@ WHERE artist_genres != 'N/A'
 GROUP BY artist_genres
 ORDER BY popularidad_promedio DESC;
 ```
-9. ¿Existe una correlación visible entre la popularidad del artista y la de sus temas?
+6. ¿Existe una correlación visible entre la popularidad del artista y la de sus temas?
     ```SQL SELECT 
     artist_name,
     artist_popularit,
