@@ -67,4 +67,24 @@ GROUP BY album_type
 ORDER BY promedio_minutos DESC;
 ```
 <img width="470" height="145" alt="image" src="https://github.com/user-attachments/assets/2e552098-c573-4b40-90fa-34954583a0ba" />
+### 7. ¿Existe una correlación visible entre la popularidad del artista (artist_popularity) y la popularidad de sus canciones (track_popularity)?
+```
+SELECT 
+   artist_name,
+   artist_popularit,
+   ROUND(AVG(track_popularity), 2) AS promedio_canciones
+FROM DataSpotify
+GROUP BY artist_name, artist_popularit
+ORDER BY artist_popularit DESC
+LIMIT 15;
+```
+<img width="612" height="420" alt="image" src="https://github.com/user-attachments/assets/eae88ce6-1446-4d95-878d-ab102b2f37b7" />
+
+#### Interpretación de los datos:
+Al comparar las dos métricas numéricas observamos:  
+* Taylor Swift: Popularidad de artista = 100, promedio de canciones = 60.05.   
+* Bad Bunny: Popularidad de artista = 95, promedio de canciones = 73.34.  
+* Drake: Popularidad de artista = 95, promedio de canciones = 65.89.
+
+Conclusión analítica:Sí existe una relación positiva visible: Los artistas con popularidad muy alta ($\ge 95$) mantienen promedios de canciones elevados ($\ge 60$) en comparación con el resto del catálogo general.   El promedio de canciones siempre es menor que el pico del artista: Esto ocurre porque artistas consolidados como Taylor Swift o Drake tienen discografías muy extensas; aunque sus sencillos principales alcancen puntuaciones cercanas a 90 o 100, sus temas de relleno o pistas secundarias promedian entre 40 y 60 puntos, moderando la media general. 
 
