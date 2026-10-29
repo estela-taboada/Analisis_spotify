@@ -22,7 +22,7 @@ LIMIT 10;
 
 2. ¿Cuál es el promedio de duración de las canciones según el tipo de lanzamiento (album_type)?
 ```SQL
-   SQLSELECT 
+SELECT 
     album_type,
     ROUND(AVG(track_duration_m), 2) AS promedio_duracion_min
 FROM DataSpotify
@@ -41,7 +41,7 @@ GROUP BY explicit;
 
 4. ¿Quiénes son los 5 artistas con mayor número de seguidores?
    
-   ```SQL
+```SQL
    SELECT 
     artist_name,
     MAX(artist_followers) AS total_seguidores
@@ -63,7 +63,8 @@ GROUP BY artist_genres
 ORDER BY popularidad_promedio DESC;
 ```
 6. ¿Existe una correlación visible entre la popularidad del artista y la de sus temas?
-    ```SQL SELECT 
+```SQL
+SELECT 
     artist_name,
     artist_popularit,
     ROUND(AVG(track_popularity), 2) AS promedio_canciones
