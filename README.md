@@ -90,3 +90,29 @@ Al comparar las dos métricas numéricas observamos:
 ### Conclusión analítica:
 Sí existe una relación positiva visible: Los artistas con popularidad muy alta ($\ge 95$) mantienen promedios de canciones elevados ($\ge 60$) en comparación con el resto del catálogo general.   El promedio de canciones siempre es menor que el pico del artista: Esto ocurre porque artistas consolidados como Taylor Swift o Drake tienen discografías muy extensas; aunque sus sencillos principales alcancen puntuaciones cercanas a 90 o 100, sus temas de relleno o pistas secundarias promedian entre 40 y 60 puntos, moderando la media general. 
 
+### 8. Usando DENSE_RANK() o ROW_NUMBER(): ¿Cuál es la canción más popular de cada artista dentro del dataset?
+```
+WITH canciones_rankeadas AS (
+    SELECT 
+        artist_name,
+        track_name,
+        track_popularity,
+        ROW_NUMBER() OVER(
+            PARTITION BY artist_name 
+            ORDER BY track_popularity DESC
+        ) AS ranking
+    FROM DataSpotify
+)
+SELECT 
+    artist_name,
+    track_name,
+    track_popularity
+FROM canciones_rankeadas
+WHERE ranking = 1
+ORDER BY track_popularity DESC;
+```
+<img width="567" height="412" alt="image" src="https://github.com/user-attachments/assets/96c5048b-fa13-4dba-9f31-8b17dc13a1c9" />
+
+### 9. ¿Cómo se distribuye la duración de los tracks? ¿Las canciones cortas (menores a 2.5 min) tienen mayor popularidad promedio que las largas? 
+
+
