@@ -86,5 +86,6 @@ Al comparar las dos métricas numéricas observamos:
 * Bad Bunny: Popularidad de artista = 95, promedio de canciones = 73.34.  
 * Drake: Popularidad de artista = 95, promedio de canciones = 65.89.
 
-Conclusión analítica:Sí existe una relación positiva visible: Los artistas con popularidad muy alta ($\ge 95$) mantienen promedios de canciones elevados ($\ge 60$) en comparación con el resto del catálogo general.   El promedio de canciones siempre es menor que el pico del artista: Esto ocurre porque artistas consolidados como Taylor Swift o Drake tienen discografías muy extensas; aunque sus sencillos principales alcancen puntuaciones cercanas a 90 o 100, sus temas de relleno o pistas secundarias promedian entre 40 y 60 puntos, moderando la media general. 
+### Conclusión analítica:
+Sí existe una relación positiva visible: Los artistas con popularidad muy alta ($\ge 95$) mantienen promedios de canciones elevados ($\ge 60$) en comparación con el resto del catálogo general.   El promedio de canciones siempre es menor que el pico del artista: Esto ocurre porque artistas consolidados como Taylor Swift o Drake tienen discografías muy extensas; aunque sus sencillos principales alcancen puntuaciones cercanas a 90 o 100, sus temas de relleno o pistas secundarias promedian entre 40 y 60 puntos, moderando la media general. 
 
