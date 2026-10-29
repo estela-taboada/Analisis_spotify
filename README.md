@@ -58,3 +58,13 @@ GROUP BY artist_genres
 ORDER BY popularidad_promedio DESC;
 ```
 <img width="607" height="391" alt="image" src="https://github.com/user-attachments/assets/1da7f7d4-ea61-4818-9fe7-df3efe87a56b" />
+
+### 6. ¿Cuál es la duración promedio (track_duration_m) de las canciones según el tipo de álbum (album_type)?*/ 
+```
+SELECT album_type, ROUND(AVG(track_duration_m), 2) AS promedio_minutos
+FROM DataSpotify
+GROUP BY album_type
+ORDER BY promedio_minutos DESC;
+```
+<img width="470" height="145" alt="image" src="https://github.com/user-attachments/assets/2e552098-c573-4b40-90fa-34954583a0ba" />
+
