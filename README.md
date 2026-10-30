@@ -19,7 +19,7 @@ FROM DataSpotify
 ORDER BY track_popularity DESC
 LIMIT 10;
 ```
-<img width="589" height="378" alt="image" src="https://github.com/user-attachments/assets/25205ca3-a5f9-4f9f-acdc-3102f4e16d0d" />
+<img width="460" height="109" alt="image" src="https://github.com/user-attachments/assets/c158cb9c-d745-4d6d-92dc-f088ddfa171a" />
 
 ### 2. ¿Cuál es el promedio de duración de las canciones según el tipo de lanzamiento (album_type)?
 ```SQL
