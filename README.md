@@ -187,12 +187,14 @@ Aproximadamente el 75% del catálogo corresponde a canciones aptas para todo pú
 
 Recomendación A&R: Asegurar siempre el lanzamiento simultáneo de versiones clean en canciones de géneros urbanos y alternativos para acceder a las listas editoriales de Spotify con mayor penetración comercial.
 
-4. Concentración de Popularidad y Tratamiento de Empates (Top 10)
+ 4. Concentración de Popularidad y Tratamiento de Empates (Top 10)
 Los subgéneros líderes (pop soul con 90 pts, corridos tumbados y alternative r&b con 87 pts) superan en más de 30 puntos la media global. En el límite inferior del Top 10 se registran empates en 84 puntos (country, glam rock, latin house y reggaeton chileno), los cuales se conservaron en la visualización para reflejar la diversidad de estilos que logran tracción masiva sin alterar arbitrariamente el umbral de corte.
 
+```
 📁 6. Estructura del Repositorio
 Plaintext
 ├── assets/                  # Capturas de pantalla y evidencias del informe
 ├── data/                    # Dataset base de Spotify (.csv / .sqlite)
 ├── Spotify_Analysis.pbix    # Reporte interactivo de Power BI
 └── README.md                # Documentación ejecutiva del proyecto
+```
