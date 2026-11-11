@@ -179,3 +179,47 @@ Diseñar estrategias de retención dentro de las plataformas que enlacen el tema
 Aproximadamente el 75% del catálogo corresponde a canciones aptas para todo público (clean).
 ### Recomendación:
 Asegurar siempre el lanzamiento simultáneo de versiones clean en canciones de géneros urbanos y alternativos para acceder a las listas editoriales de Spotify con mayor penetración comercial.
+# Spotify Tracks Analysis & Dashboard (Power BI)
+
+## 📌 Descripción del Proyecto
+Este proyecto consiste en un análisis exploratorio y diseño de un dashboard interactivo en **Power BI** a partir de un conjunto de datos de **8,582 canciones** de Spotify. El objetivo principal es identificar patrones de popularidad musical según subgéneros y tipo de lanzamiento, proporcionando métricas ejecutivas para la toma de decisiones editoriales y de difusión de catálogo.
+
+---
+
+## 📊 Vista Previa del Dashboard
+<img width="953" height="485" alt="image" src="https://github.com/user-attachments/assets/c158f643-ab54-4daf-ae41-4e62e47aa6cc" />
+
+---
+
+## 📈 Indicadores Clave de Negocio (KPIs)
+* **Volumen Total:** 8,582 canciones analizadas.
+* **Popularidad Promedio Global:** 52.36 / 100 puntos.
+* **Duración Promedio por Pista:** 3.49 minutos (~3 min 29 seg).
+
+---
+
+## 🔍 Hallazgos Principales (Business Insights)
+1. **Liderazgo de Géneros de Nicho y Regionales:**
+   * El género con mayor popularidad promedio es `pop soul` (90 pts), seguido de `corridos tumbados/bélicos` y `alternative r&b / indie soul` (87 pts).
+   * Estos estilos superan por más de 30 puntos la media global del catálogo (52.36), demostrando que la alta tracción en streaming está impulsada por nichos y sonidos regionales de fuerte identidad cultural.
+2. **Distribución en el Top 10 (Tratamiento de Empates):**
+   * El corte del Top 10 incluye 12 filas debido a empates directos en una puntuación de 84 puntos (`country`, `glam rock`, `latin house` y `reggaeton chileno`). 
+   * Se conservaron las filas empatadas para garantizar la integridad analítica y no sesgar la representación del catálogo.
+3. **Popularidad según Tipo de Lanzamiento:**
+   * Análisis comparativo del nivel de aceptación entre formatos (álbumes completos frente a sencillos/singles), evidenciando las preferencias de consumo de la audiencia.
+
+---
+
+## 🛠️ Herramientas y Técnicas Aplicadas
+* **Power BI Desktop:** Modelado de datos, diseño de tarjetas multi-métrica y creación de gráficos de barras y columnas.
+* **Modelado y DAX:** Creación de medidas explícitas para cálculo de promedios ponderados y conteo de registros sin duplicidad.
+* **Data Storytelling:** Jerarquía visual con tarjetas KPI en el encabezado y comparativas segmentadas en el cuerpo del informe.
+
+---
+
+## 📁 Estructura del Repositorio
+```text
+├── assets/                  # Capturas de pantalla e imágenes del reporte
+├── data/                    # Dataset base de Spotify (.csv)
+├── Spotify_Analysis.pbix    # Archivo editable de Power BI
+└── README.md                # Documentación del proyecto
